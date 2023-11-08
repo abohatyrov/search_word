@@ -19,22 +19,34 @@ _Note: If you don't provide exactly two parameters, the script displays an error
 ```
 
 ## File structure
-### 1. Shebang Line:
+#### 1. Shebang Line:
   - The script starts with `#!/bin/bash`, indicating that it should be executed using the Bash interpreter.
-### 2. Parameter Validation and Variable Assignment
+#### 2. Parameter Validation and Variable Assignment
   - The script checks the number of parameters provided and assigns them to variables.
   - It sets default values for variables, such as the sleep interval.
   - It handles parameter validation and provides an error message for incorrect usage.
-### 3. Error Handling for Input File:
+  - ```
+    if [ "$#" -lt 2 ] || [ "$#" -gt 3 ]; then
+    echo "Error! Check your parameters."
+    echo "Usage: $0 <search word> <input file> [sleep interval in seconds]"
+    exit 1
+    fi
+    
+    search_word="$1"
+    input_file="$2"
+    log_dir="logs"
+    sleep_interval=${3:-900}
+    ```
+#### 3. Error Handling for Input File:
   - The script checks if the input file exists and is readable. If not, it displays an error message and exits.
-### 4. Log Directory Setup:
+#### 4. Log Directory Setup:
   - The script checks if the log directory exists. If not, it creates the directory to store log files.
-### 5. Main Loop for Continuous Searching and Logging:
+#### 5. Main Loop for Continuous Searching and Logging:
   - The primary part of the script is a continuous loop that performs the following steps:
     - Get the current timestamp.
     - Create a unique log file name based on the timestamp.
     - Search for the specified word in the input file and store the results.
     - Log the search results to the log file.
     - Sleep for the specified or default interval to repeat the process.
-### 6. Logging:
+#### 6. Logging:
   - The script logs search results, including the timestamp, input file, matched word, and line number to the log files.
