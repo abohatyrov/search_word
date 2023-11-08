@@ -95,5 +95,13 @@ _Note: If you don't provide exactly two parameters, the script displays an error
 This structure allows the script to continuously search for a specified word, log the results, and automate the process with customizable sleep intervals.
 
 ## Build-in Commands Used in Script
--[] The `echo` command is used to display error messages and usage instructions.
--[] The `exit` command is used to terminate the script if parameter validation fails.
+- [ ] The `echo` command is used to display error messages and usage instructions.
+- [ ] The `exit` command is used to terminate the script if parameter validation fails.
+- [ ] The `mkdir` command is used to create the log directory if it doesn't exist.
+- [ ] The `date` command is used to get the current timestamp for log entries.
+- [ ] The `grep` command is used for searching for the specified word in the input file. The `-n` option shows line numbers, the `-o` option displays only matched text, and the `-i` option performs a case-insensitive search.
+- [ ] The `tee` command is used to write the search results and other log entries to the log file.
+- [ ] The `read` command is used within a loop to process search results line by line. The `-r` parameter is used to prevent backslashes from acting as an escape character. It's often used to read raw input.
+- [ ] The `cut` command is used to extract specific fields or sections of each line in a text file or from standard input. The `-d:` parameter specifies the delimiter used to separate fields in each line. The `-f1` parameter specifies the field number to be extracted.
+- [ ] The `sleep` command is used to introduce a delay (specified by the sleep interval) between search cycles.
+      
