@@ -105,3 +105,5 @@ This structure allows the script to continuously search for a specified word, lo
 - [ ] The `cut` command is used to extract specific fields or sections of each line in a text file or from standard input. The `-d:` parameter specifies the delimiter used to separate fields in each line. The `-f1` parameter specifies the field number to be extracted.
 - [ ] The `sleep` command is used to introduce a delay (specified by the sleep interval) between search cycles.
       
+## Conclusion
+The script offers an efficient way to continuously search for specific words in text files and log their occurrences. With a user-defined or default 15-minute search interval, it provides valuable insights for monitoring word presence over time. This flexible script accommodates various needs and simplifies text analysis, making it a valuable tool for tracking specific terms in documents.
