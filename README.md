@@ -23,20 +23,22 @@ _Note: If you don't provide exactly two parameters, the script displays an error
   - The script starts with `#!/bin/bash`, indicating that it should be executed using the Bash interpreter.
 #### 2. Parameter Validation and Variable Assignment
   - The script checks the number of parameters provided and assigns them to variables.
-  - It sets default values for variables, such as the sleep interval.
-  - It handles parameter validation and provides an error message for incorrect usage.
   - ```bash
     if [ "$#" -lt 2 ] || [ "$#" -gt 3 ]; then
-    echo "Error! Check your parameters."
-    echo "Usage: $0 <search word> <input file> [sleep interval in seconds]"
-    exit 1
+        echo "Error! Check your parameters."
+        echo "Usage: $0 <search word> <input file> [sleep interval in seconds]"
+        exit 1
     fi
-    
+    ```
+  - It sets default values for variables, such as the sleep interval.
+  - ```bash
     search_word="$1"
     input_file="$2"
     log_dir="logs"
     sleep_interval=${3:-900}
     ```
+  - It handles parameter validation and provides an error message for incorrect usage.
+
 #### 3. Error Handling for Input File:
   - The script checks if the input file exists and is readable. If not, it displays an error message and exits.
   - ```bash
@@ -45,6 +47,7 @@ _Note: If you don't provide exactly two parameters, the script displays an error
     exit 1
     fi
     ```
+
 #### 4. Log Directory Setup:
   - The script checks if the log directory exists. If not, it creates the directory to store log files.
   - ```bash
@@ -52,6 +55,7 @@ _Note: If you don't provide exactly two parameters, the script displays an error
         mkdir "$log_dir"
     fi
     ```
+
 #### 5. Main Loop for Continuous Searching and Logging:
   - The primary part of the script is a continuous loop that performs the following steps:
     - Get the current timestamp.
@@ -87,3 +91,9 @@ _Note: If you don't provide exactly two parameters, the script displays an error
     - ```bash
       sleep "$sleep_interval"
       ```
+
+This structure allows the script to continuously search for a specified word, log the results, and automate the process with customizable sleep intervals.
+
+## Build-in Commands Used in Script
+-[] The `echo` command is used to display error messages and usage instructions.
+-[] The `exit` command is used to terminate the script if parameter validation fails.
