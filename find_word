@@ -1,0 +1,33 @@
+#!/bin/bash
+
+if [ "$#" -ne 3 ]; then
+    echo "Error! Check your parameters."
+    echo "Usage: $0 <search word> <input file> <output file>"
+    exit 1
+fi
+
+search_word="$1"
+input_file="$2"
+output_file="$3"
+
+while true; do
+    current_time=$(date +"%Y-%m-%d %H:%M:%S")
+    
+    results=$(grep -n -o "$search_word" "$input_file")
+    
+    echo "Search of word '$search_word' at $current_time" | tee -a "$output_file"
+    echo -n "Lines: " | tee -a "$output_file"
+    if [ -n "$results" ]; then
+        while read -r result; do
+            line_number=$(echo "$result" | cut -d: -f1)
+            
+            echo -n "$line_number  " | tee -a "$output_file"
+        done <<< "$results"
+    fi
+
+    echo 
+    echo "-------------------------------------------------" | tee -a "$output_file"
+    
+    sleep 900
+done
+
